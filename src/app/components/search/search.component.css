@@ -1,0 +1,37 @@
+.table-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 6%;
+    margin-bottom: 0;
+}
+
+.paginator {
+    width: 80%;
+    margin: auto;
+}
+
+.search-form-container {
+    width: 40%;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.date-form-field {
+    width: 50%;
+    margin-right: 4%;
+    margin-left: 20%;
+}
+
+.centered {
+    width: 80%;
+    margin: auto;
+}
+
+.mat-button {
+    min-width: 0px;
+    padding: 0 8px;
+}
+
+.add-food-btn {
+    background-color: rgb(43, 230, 43);
+}
