@@ -1,0 +1,67 @@
+.content {
+    width: 100%;
+    margin-top: 7%;
+  }
+  .fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  mat-card {
+    max-width: 350px;
+    text-align: center;
+    animation: fadein 1s;
+    -o-animation: fadein 1s; /* Opera */
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+  }
+  
+  mat-input-container {
+    display: block;
+  }
+  
+  mat-spinner {
+    width: 25px;
+    height: 25px;
+    margin: 20px auto 0 auto;
+  }
+  
+  .mat-form-field {
+    display: inline;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+  }
+  
+  .error {
+    color: #D50000;
+  }
+  
+  .success {
+    color: #8BC34A;
+  }
+  
+  @media screen and (max-width: 599px) {
+    .content {
+      display: block !important;
+    }
+  
+  mat-card {
+      display: block !important;
+      max-width: 999px;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    cursor: auto;
+    color: #FFFFFF;
+  }
+  
+  .mat-card {
+    margin: auto;
+    width: 50%;
+  }
+  
