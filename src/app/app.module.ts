@@ -35,6 +35,8 @@ import {
 import { SearchComponent } from './components/search/search.component';
 import { routes } from './app.routes';
 import { LoginComponent } from './components/login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { RequestInterceptorService } from './services/request-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,14 @@ import { LoginComponent } from './components/login/login.component';
     MatButtonToggleModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    { 
+			provide	: HTTP_INTERCEPTORS, 
+			useClass: RequestInterceptorService,
+			multi: true 
+    }, 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
