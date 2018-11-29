@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
 
   canActivate(router: ActivatedRouteSnapshot,
     state: RouterStateSnapshot){
-    console.log("Guard !!");
     let activate = false;
     let jwtHelper = new JwtHelper();
     var token = localStorage.getItem('token');
