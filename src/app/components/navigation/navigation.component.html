@@ -1,0 +1,37 @@
+<mat-toolbar color="primary" *ngIf="isAuthenticated()">
+  <a mat-button color="secondary" routerLink="food">
+      <mat-icon>home</mat-icon>&nbsp;
+      <span><b>{{title}}</b></span>        
+  </a>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space">
+      
+  </span>
+
+  <!-- <button class="mat-button"> -->
+  <button class="mat-button-menu" mat-button [matMenuTriggerFor]="menuList">
+      <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menuList="matMenu">
+      <a mat-menu-item (click)="logout()">
+          <mat-icon>clear</mat-icon>
+          <span>Logout</span>
+      </a>
+  </mat-menu>
+  <!-- </button> -->
+
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="!isAuthenticated()">
+  
+  <a mat-button color="primary" routerLink="">
+      <mat-icon>home</mat-icon>&nbsp;
+      <span><b>{{title}}</b></span>        
+  </a>
+  
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+      
+
+</mat-toolbar>

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+      login: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])]
     });
   }
@@ -36,10 +36,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.authService.login(this.form.value).pipe(delay(2000)).subscribe((resp : any) => {
-      this.tokenService.saveToken(resp.token);
+      this.tokenService.saveToken(resp);
       this.router.navigate(['']);
     }, resp => {
-      if( resp.status === 401)
+      this.submitted = false;
+      if( resp.status === 401 || resp.status === 403)
         resp.error ? this.toastr.error(resp.error) : this.toastr.error("Incorrect credentials");
     });
   }

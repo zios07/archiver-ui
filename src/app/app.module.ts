@@ -37,12 +37,15 @@ import { routes } from './app.routes';
 import { LoginComponent } from './components/login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RequestInterceptorService } from './services/request-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,9 @@ import { RequestInterceptorService } from './services/request-interceptor.servic
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonToggleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthenticationService,

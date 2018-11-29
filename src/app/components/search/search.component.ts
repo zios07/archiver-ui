@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityService } from '../../services/entity.service';
+import { EntityService } from 'src/app/services/entity.service';
+import { SearchDto } from 'src/app/models/SearchDto';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search',
@@ -8,10 +10,10 @@ import { EntityService } from '../../services/entity.service';
 })
 export class SearchComponent implements OnInit {
 
-  dateFrom;
-  dateTo;
+  dto:SearchDto = new SearchDto();
 
-  constructor(private entityService: EntityService) {
+  constructor(private entityService: EntityService,
+              private toastr: ToastrService) {
     
   }
 
@@ -20,13 +22,12 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    console.log(this.dateFrom);
-    console.log(this.dateTo);
-    this.entityService.setPath('/search?from' + this.dateFrom + "&to=" + this.dateTo);
-    this.entityService.findAll().subscribe(resp => {
-      console.log(resp);
+    console.log(this.dto);
+    this.entityService.setPath('/archives/search');
+    this.entityService.search(this.dto).subscribe(resp => {
+      this.toastr.info(resp.toString());
     }, error => {
-      console.log(error);
+      this.toastr.error(error.toString());
     })
   }
 
