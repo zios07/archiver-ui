@@ -3,7 +3,7 @@
     <mat-grid-list cols="3" rowHeight="4:1">
       <mat-grid-tile>
         <mat-form-field>
-          <input matInput [matDatepicker]="pickerFrom" [(ngModel)]="dto.dateFrom" name="dateFrom" placeholder="From" />
+          <input matInput [matDatepicker]="pickerFrom" [(ngModel)]="dto.dateFrom" [disabled]="dto.timestamp" name="dateFrom" placeholder="From" />
           <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
           <mat-datepicker #pickerFrom></mat-datepicker>
         </mat-form-field>
@@ -11,7 +11,7 @@
 
       <mat-grid-tile>
         <mat-form-field>
-          <input matInput [matDatepicker]="pickerTo" [(ngModel)]="dto.dateTo" name="dateTo" placeholder="To" />
+          <input matInput [matDatepicker]="pickerTo" [(ngModel)]="dto.dateTo" [disabled]="dto.timestamp || !dto.dateFrom" name="dateTo" placeholder="To" />
           <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
           <mat-datepicker #pickerTo></mat-datepicker>
         </mat-form-field>
@@ -19,7 +19,7 @@
 
       <mat-grid-tile>
         <mat-form-field>
-          <input matInput [matDatepicker]="pickerTimestamp" [(ngModel)]="dto.timestamp" name="timestamp" placeholder="Timestamp" />
+          <input matInput [matDatepicker]="pickerTimestamp" [(ngModel)]="dto.timestamp" [disabled]="dto.dateFrom" name="timestamp" placeholder="Timestamp" />
           <mat-datepicker-toggle matSuffix [for]="pickerTimestamp"></mat-datepicker-toggle>
           <mat-datepicker #pickerTimestamp></mat-datepicker>
         </mat-form-field>
