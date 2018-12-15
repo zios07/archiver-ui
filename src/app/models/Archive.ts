@@ -1,5 +1,8 @@
+import { ArchiveMetadata } from "./ArchiveMetadata";
+
 export class Archive {
 
-    fileName: string;
-    id: string
+    id: number;
+	date: Date;
+    consumer: ArchiveMetadata
 }

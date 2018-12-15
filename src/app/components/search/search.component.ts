@@ -12,10 +12,14 @@ import { Archive } from '../../models/Archive';
 })
 export class SearchComponent implements OnInit {
 
-  dto:SearchDto = new SearchDto();
+  dto: SearchDto = new SearchDto();
+  showTable: boolean = false;
   columns = [
-    { columnDef: 'fileName',  header: 'Nom du fichier',     cell: (row: Archive) => `${row.fileName}` },
-    { columnDef: 'id',  header: 'ID',     cell: (row: Archive) => `${row.id}`  }
+    { columnDef: 'consumer', header: 'Institute', cell: (row: Archive) => `${row.consumer.institute}` },
+    { columnDef: 'id', header: 'Transaction Id', cell: (row: Archive) => `${row.consumer.transactionId}` },
+    { columnDef: 'legalContext', header: 'Legal Context', cell: (row: Archive) => `${row.consumer.legalContext}` },
+    { columnDef: 'keyValue', header: 'KeyValue', cell: (row: Archive) => `${row.consumer.keyValue}` },
+    { columnDef: 'externalTimestamp', header: 'External Timestamp', cell: (row: Archive) => `${row.consumer.externalTimestamp}` }
   ];
 
   dataSource: MatTableDataSource<Archive>;
@@ -23,20 +27,20 @@ export class SearchComponent implements OnInit {
   displayedColumns = [];
 
   constructor(private entityService: EntityService,
-              private toastr: ToastrService) {
-    
+    private toastr: ToastrService) {
+
   }
 
   ngOnInit() {
     this.columns.forEach(element => {
-      this.displayedColumns.push(element.columnDef); 
+      this.displayedColumns.push(element.columnDef);
     });
-    this.displayedColumns.push('actions');
   }
 
   search() {
     this.entityService.setPath('/archives/search');
     this.entityService.search(this.dto).subscribe((resp: any) => {
+      this.showTable = true;
       this.dataSource = new MatTableDataSource<Archive>(resp);
       this.dataSource.paginator = this.paginator;
     }, error => {
