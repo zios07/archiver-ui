@@ -35,6 +35,7 @@ export class SearchComponent implements OnInit {
     this.columns.forEach(element => {
       this.displayedColumns.push(element.columnDef);
     });
+    // this.displayedColumns.push("actions");
   }
 
   search() {
@@ -49,8 +50,9 @@ export class SearchComponent implements OnInit {
   }
 
   download(row) {
-    this.entityService.setPath('/archives/download')
-    window.location.href = this.entityService.getDownloadUrl(row.id);
+    console.log(row);
+    // this.entityService.setPath('/archives/download')
+    // window.location.href = this.entityService.getDownloadUrl(row.id);
   }
 
 }
