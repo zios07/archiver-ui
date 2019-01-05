@@ -38,6 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
+    this.formatDate();
     this.entityService.setPath('/archives/search');
     this.entityService.search(this.dto).subscribe((resp: any) => {
       this.showTable = true;
@@ -46,6 +47,21 @@ export class SearchComponent implements OnInit {
     }, error => {
       this.toastr.error(error.toString());
     })
+  }
+
+  formatDate() {
+    var timestamp = this.dto.timestamp;
+    if (timestamp) {
+      this.dto.timestamp = new Date(Date.UTC(timestamp.getFullYear(), timestamp.getMonth(), timestamp.getDate()));
+    }
+    else {
+      var from = this.dto.dateFrom;
+      var to = this.dto.dateTo;
+      if(from)
+        this.dto.dateFrom = new Date(Date.UTC(from.getFullYear(), from.getMonth(), from.getDate()));
+      if(to)
+        this.dto.dateTo = new Date(Date.UTC(to.getFullYear(), to.getMonth(), to.getDate()));
+    }
   }
 
   download(row) {

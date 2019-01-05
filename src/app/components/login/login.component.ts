@@ -13,7 +13,7 @@ import { delay } from "rxjs/operators";
 })
 export class LoginComponent implements OnInit {
 
-  title = 'Login';
+  title = 'Authentification';
   form: FormGroup;
   submitted = false;
 
