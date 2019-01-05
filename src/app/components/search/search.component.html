@@ -26,6 +26,7 @@
             [matDatepicker]="pickerTo"
             [(ngModel)]="dto.dateTo"
             [disabled]="dto.timestamp || !dto.dateFrom"
+            [min]="dto.dateFrom"
             name="dateTo"
             placeholder="To"
           />
@@ -78,9 +79,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile>
-        <button mat-raised-button color="primary" (click)="search()">
-          Search
-        </button>
+        <button mat-raised-button color="primary" [disabled]="dto.dateFrom && !dto.dateTo" (click)="search()">Search</button>
       </mat-grid-tile>
     </mat-grid-list>
   </form>
